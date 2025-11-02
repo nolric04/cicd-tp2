@@ -54,7 +54,7 @@ tp1-ia-tests/
 ├── ai_tools/
 │   ├── __init__.py
 │   ├── test_generator.py      # Générateur de tests IA
-│   └── result_analyzer.py     # Analyseur de résultats IA
+│   └── visual_comparator.py     # Comparator Visuel
 ├── screenshots/
 │   ├── baseline/              # Images de référence
 │   └── current/               # Images courantes
