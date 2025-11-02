@@ -1304,6 +1304,16 @@ git push
 **Tests qui échouent** :
 - C'est normal au début ! Consultez les logs pour identifier le problème
 
+---
+
+**🎉 Félicitations! Vous avez complété le TP2!**
+
+Vous maîtrisez maintenant:
+
+✅ La génération automatique de tests avec IA  
+✅ Les tests visuels et comparaison d'images  
+✅ L'analyse des résultats avec Allure Report  
+✅ L'intégration CI/CD complète
 
 ---
 
@@ -1325,13 +1335,5 @@ git push
 - [Playwright](https://playwright.dev/) - Alternative à Selenium
 - [Allure](https://docs.qameta.io/allure/) - Reporting avancé
 
----
 
-**🎉 Félicitations! Vous avez complété le TP2!**
-
-Vous maîtrisez maintenant:
-✅ La génération automatique de tests avec IA  
-✅ Les tests visuels et comparaison d'images  
-✅ L'analyse des résultats avec Allure Report  
-✅ L'intégration CI/CD complète
 
