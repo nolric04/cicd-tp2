@@ -1,0 +1,161 @@
+==  Addition
+<!-- Addition de deux nombres positifs simples -->
+[source,gherkin]
+----
+Feature: Addition
+  Scenario: Addition de 5 et 3
+    Given un objet Calculator
+    When j'appelle add avec 5 et 3
+    Then le résultat doit être 8
+
+  Scenario: Addition de -5 et 3
+    Given un objet Calculator
+    When j'appelle add avec -5 et 3
+    Then le résultat doit être -2
+
+  Scenario: Addition de 2.5 et 3.1
+    Given un objet Calculator
+    When j'appelle add avec 2.5 et 3.1
+    Then le résultat doit être 5.6
+----
+
+== Soustraction
+
+<!-- Soustraction avec nombres positifs, négatifs -->
+
+[source,gherkin]
+----
+Feature: Soustraction
+  Scenario: Soustraction de 10 et 4
+    Given un objet Calculator
+    When j'appelle subtract avec 10 et 4
+    Then le résultat doit être 6
+
+  Scenario: Soustraction de -2 et -5
+    Given un objet Calculator
+    When j'appelle subtract avec -2 et -5
+    Then le résultat doit être 3
+----
+
+== Multiplication
+<!-- Multiplication simple, avec zéro -->
+
+[source,gherkin]
+----
+Feature: Multiplication
+  Scenario: Multiplication de 7 et 6
+    Given un objet Calculator
+    When j'appelle multiply avec 7 et 6
+    Then le résultat doit être 42
+
+  Scenario: Multiplication de 7 et 0
+    Given un objet Calculator
+    When j'appelle multiply avec 7 et 0
+    Then le résultat doit être 0
+----
+
+== Division
+<!-- Division simple, négative et par zéro -->
+
+[source,gherkin]
+----
+Feature: Division
+  Scenario: Division de 20 par 4
+    Given un objet Calculator
+    When j'appelle divide avec 20 et 4
+    Then le résultat doit être 5
+
+  Scenario: Division de -20 par 4
+    Given un objet Calculator
+    When j'appelle divide avec -20 et 4
+    Then le résultat doit être -5
+
+  Scenario: Division par zéro
+    Given un objet Calculator
+    When j'appelle divide avec 10 et 0
+    Then une exception ValueError doit être levée avec le message "Division par zéro impossible"
+----
+== Modulo
+<!-- Modulo normal, négatif et par zéro -->
+
+[source,gherkin]
+----
+Feature: Modulo
+  Scenario: Modulo de 10 par 3
+    Given un objet Calculator
+    When j'appelle modulo avec 10 et 3
+    Then le résultat doit être 1
+
+  Scenario: Modulo de -10 par 3
+    Given un objet Calculator
+    When j'appelle modulo avec -10 et 3
+    Then le résultat doit être -1
+
+  Scenario: Modulo par zéro
+    Given un objet Calculator
+    When j'appelle modulo avec 10 et 0
+    Then une exception ValueError doit être levée avec le message "Modulo par zéro impossible"
+----
+== Puissance
+<!-- Puissance simple et exposant négatif -->
+
+[source,gherkin]
+----
+Feature: Puissance
+  Scenario: Calcul de 2 à la puissance 3
+    Given un objet Calculator
+    When j'appelle power avec 2 et 3
+    Then le résultat doit être 8
+
+  Scenario: Calcul de 2 à la puissance -2
+    Given un objet Calculator
+    When j'appelle power avec 2 et -2
+    Then le résultat doit être 0.25
+----
+== Factorielle
+<!-- Factorielle classique, zéro et négative -->
+
+
+[source,gherkin]
+----
+Feature: Factorielle
+  Scenario: Factorielle de 5
+    Given un objet AdvancedCalculator
+    When j'appelle factorial avec 5
+    Then le résultat doit être 120
+
+  Scenario: Factorielle de 0
+    Given un objet AdvancedCalculator
+    When j'appelle factorial avec 0
+    Then le résultat doit être 1
+
+  Scenario: Factorielle d'un nombre négatif
+    Given un objet AdvancedCalculator
+    When j'appelle factorial avec -3
+    Then une exception ValueError doit être levée avec le message "Factorielle définie uniquement pour les entiers positifs"
+----
+
+== Vérification nombre premier
+<!-- Nombres premiers, non-premiers, <2 et grands nombres -->
+[source,gherkin]
+----
+Feature: Vérification nombre premier
+  Scenario: Vérifier que 7 est premier
+    Given un objet AdvancedCalculator
+    When j'appelle is_prime avec 7
+    Then le résultat doit être True
+  Scenario: Vérifier que 8 n'est pas premier
+    Given un objet AdvancedCalculator
+    When j'appelle is_prime avec 8
+    Then le résultat doit être False
+
+  Scenario: Vérifier que 1 n'est pas premier
+    Given un objet AdvancedCalculator
+    When j'appelle is_prime avec 1
+    Then le résultat doit être False
+
+  Scenario: Vérifier que 7919 est premier
+    Given un objet AdvancedCalculator
+    When j'appelle is_prime avec 7919
+    Then le résultat doit être True
+----

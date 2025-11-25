@@ -1,0 +1,43 @@
+# Spécifications de la Calculatrice
+
+## Fonctionnalités de base
+
+### Addition
+- GIVEN deux nombres positifs WHEN j'additionne THEN le résultat est la somme
+- GIVEN un nombre positif et un nombre négatif WHEN j'additionne THEN le résultat est correct
+- GIVEN deux nombres décimaux WHEN j'additionne THEN le résultat est précis
+
+### Soustraction
+- GIVEN deux nombres positifs WHEN je soustrais THEN le résultat est correct
+- GIVEN le résultat est négatif WHEN je soustrais THEN le signe est correct
+
+### Multiplication
+- GIVEN deux nombres positifs WHEN je multiplie THEN le résultat est le produit
+- GIVEN un nombre par zéro WHEN je multiplie THEN le résultat est zéro
+- GIVEN deux nombres négatifs WHEN je multiplie THEN le résultat est positif
+
+### Division
+- GIVEN deux nombres où le diviseur n'est pas zéro WHEN je divise THEN le résultat est correct
+- GIVEN le diviseur est zéro WHEN je divise THEN une exception ValueError est levée
+- GIVEN une division décimale WHEN je divise THEN le résultat est précis
+
+### Puissance
+- GIVEN une base et un exposant positif WHEN je calcule la puissance THEN le résultat est correct
+- GIVEN un exposant négatif WHEN je calcule la puissance THEN le résultat est un décimal
+- GIVEN un exposant de zéro WHEN je calcule la puissance THEN le résultat est 1
+
+### Modulo
+- GIVEN deux nombres positifs WHEN je calcule le modulo THEN le reste est correct
+- GIVEN le diviseur est zéro WHEN je calcule le modulo THEN une exception est levée
+
+## Fonctionnalités avancées
+
+### Factorielle
+- GIVEN un entier positif WHEN je calcule la factorielle THEN le résultat est correct
+- GIVEN zéro WHEN je calcule la factorielle THEN le résultat est 1
+- GIVEN un nombre négatif WHEN je calcule la factorielle THEN une exception est levée
+
+### Nombre premier
+- GIVEN un nombre premier WHEN je vérifie THEN retourne True
+- GIVEN un nombre non premier WHEN je vérifie THEN retourne False
+- GIVEN un nombre inférieur à 2 WHEN je vérifie THEN retourne False
