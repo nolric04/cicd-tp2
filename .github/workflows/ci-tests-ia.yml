@@ -44,6 +44,8 @@ jobs:
     needs: setup
     steps:
       - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: pip install -r requirements.txt
       - name: Génération des tests
         run: python ai_tools/test_generator.py
       - name: Execution des Tests Unitaires
@@ -63,6 +65,10 @@ jobs:
     needs: test-and-analyze
     steps:
       - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+
       - name: Fusion histoire + nouveaux résultats
         run: |
           if [ -d reports/allure-history ]; then
