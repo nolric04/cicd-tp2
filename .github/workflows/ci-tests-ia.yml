@@ -41,6 +41,12 @@ jobs:
         run: pytest tests/visual/ -v --html=reports/visual-report.html --self-contained-html
         continue-on-error: true
 
+      - name: Fusion histoire + nouveaux résultats
+        run: |
+          if [ -d reports/allure-history ]; then
+            cp -R reports/allure-history/* reports/allure-results/ || true
+          fi
+
       - name: Executer avec Allure
         run: pytest tests/ -v --html=reports/full-report.html --self-contained-html --alluredir=reports/allure-results
         continue-on-error: true
