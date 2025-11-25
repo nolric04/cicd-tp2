@@ -40,4 +40,22 @@ jobs:
       - name: Execution des tests fonctionnels
         run: pytest tests/visual/ -v --html=reports/visual-report.html --self-contained-html
         continue-on-error: true
-    # Les étapes suivent ici...
+
+      - name: Executer avec Allure
+        run: pytest tests/ -v --html=reports/full-report.html --self-contained-html --alluredir=reports/allure-results
+        continue-on-error: true
+      - name: Générer le rapport allure
+        run: allure generate reports/allure-results --clean -o reports/allure-report
+
+      - name: Upload des rapports
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: reports/
+          retention-days: 30
+      - name: Upload des screenshots
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: screenshots/
+          retention-days: 30
