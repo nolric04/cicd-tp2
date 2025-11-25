@@ -60,7 +60,7 @@ jobs:
     name: Reporting
     runs-on: ubuntu-latest
     needs: test-and-analyze
-    jobs:
+    steps:
       - name: Fusion histoire + nouveaux résultats
         run: |
           if [ -d reports/allure-history ]; then
