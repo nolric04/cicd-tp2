@@ -1,0 +1,43 @@
+name: CI - Tests Automatisés avec IA
+
+on:
+  push:
+    branches: [Tavernier]
+
+jobs:
+  test-and-analyze:
+    name: Tests + Analyse IA
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [ 3.14 ]  # Quelle version ?
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      - uses: browser-actions/setup-chrome@latest
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Installation Allure
+        run: npm install -g allure-commandline
+
+
+      - name: Génération des tests
+        run: python ai_tools/test_generator.py
+      - name: Execution des Tests Unitaires
+        run: pytest tests/generated/ -v --html=reports/generated-report.html --self-contained-html
+        continue-on-error: true
+      - name: Execution des tests fonctionnels
+        run: pytest tests/visual/ -v --html=reports/visual-report.html --self-contained-html
+        continue-on-error: true
+    # Les étapes suivent ici...
