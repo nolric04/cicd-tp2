@@ -5,8 +5,12 @@ on:
     branches: [Tavernier]
 
 jobs:
-  test-and-analyze:
-    name: Tests + Analyse IA
+
+  # ------------------------------------------------------------
+  # Job 1 : Setup environnement (Python, Node, Chrome, dépendances)
+  # ------------------------------------------------------------
+  setup:
+    name: Mise en place - Install
     runs-on: ubuntu-latest
 
     strategy:
@@ -31,7 +35,14 @@ jobs:
       - name: Installation Allure
         run: npm install -g allure-commandline
 
-
+  # ------------------------------------------------------------
+  # Job 2 : Exécution des tests (unitaires + fonctionnels)
+  # ------------------------------------------------------------
+  test-and-analyze:
+    name: TestExecution
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
       - name: Génération des tests
         run: python ai_tools/test_generator.py
       - name: Execution des Tests Unitaires
@@ -41,6 +52,15 @@ jobs:
         run: pytest tests/visual/ -v --html=reports/visual-report.html --self-contained-html
         continue-on-error: true
 
+
+  # ------------------------------------------------------------
+  # Job 3 : Génération Allure + fusion historique
+  # ------------------------------------------------------------
+  reporting:
+    name: Reporting
+    runs-on: ubuntu-latest
+    needs: test-and-analyze
+    jobs:
       - name: Fusion histoire + nouveaux résultats
         run: |
           if [ -d reports/allure-history ]; then
